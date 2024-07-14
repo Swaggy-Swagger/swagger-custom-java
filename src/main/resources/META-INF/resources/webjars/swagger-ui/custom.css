@@ -1,0 +1,59 @@
+/* Custom CSS for Swagger UI */
+body {
+    background-color: #f0e68c; /* Khaki */
+}
+
+.swagger-ui .topbar {
+    background-color: #ff4500; /* OrangeRed */
+}
+
+.swagger-ui .topbar .link:after {
+    content: 'Custom Swagger UI';
+    font-size: 1.5em;
+    color: #ffffff; /* White */
+}
+
+.swagger-ui .btn {
+    background-color: #ff4500; /* OrangeRed */
+    border-color: #ff4500;
+    color: #ffffff; /* White */
+}
+
+.swagger-ui .btn:hover {
+    background-color: #ff6347; /* Tomato */
+    border-color: #ff6347;
+}
+
+.swagger-ui .info .title {
+    color: #ff4500; /* OrangeRed */
+}
+
+.swagger-ui .info .description,
+.swagger-ui .info .version {
+    color: #333333; /* Dark grey */
+}
+
+.swagger-ui .scheme-container .schemes {
+    background-color: #ffe4b5; /* Moccasin */
+    border-color: #ffdead; /* NavajoWhite */
+}
+
+.swagger-ui .opblock.opblock-get {
+    border-color: #ff4500; /* OrangeRed */
+    background: #ffe4b5; /* Moccasin */
+}
+
+.swagger-ui .opblock.opblock-post {
+    border-color: #66bb6a; /* Light green */
+    background: #e8f5e9; /* Light green */
+}
+
+.swagger-ui .opblock.opblock-put {
+    border-color: #ffa726; /* Orange */
+    background: #fff3e0; /* Light orange */
+}
+
+.swagger-ui .opblock.opblock-delete {
+    border-color: #ef5350; /* Red */
+    background: #ffebee; /* Light red */
+}
