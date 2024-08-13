@@ -13,14 +13,13 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Component
 public class OpenApiChangeTracker implements OpenApiCustomizer {
 
-    private final String changeLogPath = "src/main/resources/openapi_change_log.json";
-    private final String newFilePath = "src/main/resources/new_openapi.json";
-    private final String oldFilePath = "src/main/resources/old_openapi.json";;
+    private final String changeLogPath = "./logs/openapi_change_log.json";
+    private final String newFilePath = "./logs/new_openapi.json";
+    private final String oldFilePath = "./logs/old_openapi.json";
 
     @Override
     public void customise(OpenAPI openApi) {
@@ -42,11 +41,11 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
             Map<String, Object> oldSpec = readSpecFromFile(objectMapper, oldFilePath);
             Map<String, Object> newSpec = readSpecFromFile(objectMapper, newFilePath);
 
-            // 현재 버전
+            // current version
             String currentVersion = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
 
-            List<Map<String, Object>> differences = findChangedEndpoints(oldSpec, newSpec, currentVersion);
-            updateChangeLog(objectMapper, differences);
+            List<Map<String, Object>> differences = findChangedEndpoints(oldSpec, newSpec);
+            updateChangeLog(objectMapper, differences, currentVersion);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -56,12 +55,11 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
     private void moveOldSnapshot(String newFilePath, String oldFilePath) throws IOException {
         File newFile = new File(newFilePath);
         if (newFile.exists()) {
+            File oldFile = new File(oldFilePath);
+            oldFile.getParentFile().mkdirs();
             Files.move(Paths.get(newFilePath), Paths.get(oldFilePath), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
         } else {
-            // old 파일이 없을 경우 초기화
-            new File(oldFilePath).createNewFile();
-            ObjectMapper objectMapper = new ObjectMapper();
-            objectMapper.writeValue(new File(oldFilePath), new HashMap<String, Object>());
+            saveToFile(new ObjectMapper(), oldFilePath, new HashMap<String, Object>());
         }
     }
 
@@ -69,28 +67,32 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
         return objectMapper.readValue(new File(filePath), HashMap.class);
     }
 
-    private void updateChangeLog(ObjectMapper objectMapper, List<Map<String, Object>> differences) throws IOException {
-        Map<String, List<Map<String, Object>>> groupedByVersion = differences.stream()
-                .collect(Collectors.groupingBy(difference -> difference.get("version").toString()));
+    private void saveToFile(ObjectMapper objectMapper, String filePath, Object data) throws IOException {
+        File file = new File(filePath);
+        File parentDir = file.getParentFile();
+        if (parentDir != null && !parentDir.exists()) {
+            parentDir.mkdirs(); // 디렉토리 생성
+        }
+        objectMapper.writeValue(file, data);
+    }
 
-        List<Map<String, Object>> groupedChanges = groupedByVersion.entrySet().stream()
-                .map(entry -> {
-                    Map<String, Object> groupedEntry = new HashMap<>();
-                    groupedEntry.put("version", entry.getKey());
-                    groupedEntry.put("changes", entry.getValue());
-                    return groupedEntry;
-                }).toList();
-
+    private void updateChangeLog(ObjectMapper objectMapper, List<Map<String, Object>> differences, String currentVersion) throws IOException {
         File changeLogFile = new File(changeLogPath);
         List<Map<String, Object>> existingChangeLog = new ArrayList<>();
         if (changeLogFile.exists()) {
             existingChangeLog = objectMapper.readValue(changeLogFile, ArrayList.class);
         }
-        existingChangeLog.addAll(0, groupedChanges); // 최신 내용을 앞에 추가
-        objectMapper.writeValue(changeLogFile, existingChangeLog);
+
+        Map<String, Object> newLogEntry = new HashMap<>();
+        newLogEntry.put("version", currentVersion);
+        newLogEntry.put("changes", differences);
+
+        // change log
+        existingChangeLog.add(0, newLogEntry);
+        saveToFile(objectMapper, changeLogPath, existingChangeLog);
     }
 
-    private List<Map<String, Object>> findChangedEndpoints(Map<String, Object> oldSpec, Map<String, Object> newSpec, String currentVersion) {
+    private List<Map<String, Object>> findChangedEndpoints(Map<String, Object> oldSpec, Map<String, Object> newSpec) {
         List<Map<String, Object>> changedEndpoints = new ArrayList<>();
 
         Map<String, Object> oldPaths = (Map<String, Object>) oldSpec.getOrDefault("paths", new HashMap<>());
@@ -106,9 +108,9 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
                 String oldSummary = (oldMethodDetails != null) ? ((Map<String, Object>) oldMethodDetails).get("summary").toString() : null;
 
                 if (oldMethodDetails == null) {
-                    changedEndpoints.add(createChangeLogEntry("added", path, method, newSummary, null, currentVersion));
+                    changedEndpoints.add(createChangeLogEntry("added", path, method, newSummary, null));
                 } else if (!newSummary.equals(oldSummary)) {
-                    changedEndpoints.add(createChangeLogEntry("modified", path, method, newSummary, oldSummary, currentVersion));
+                    changedEndpoints.add(createChangeLogEntry("modified", path, method, newSummary, oldSummary));
                 }
             });
 
@@ -116,7 +118,7 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
                 oldMethods.forEach((method, oldMethodDetails) -> {
                     if (!((Map<String, Object>) newMethods).containsKey(method)) {
                         String oldSummary = (oldMethodDetails != null) ? ((Map<String, Object>) oldMethodDetails).get("summary").toString() : null;
-                        changedEndpoints.add(createChangeLogEntry("removed", path, method, null, oldSummary, currentVersion));
+                        changedEndpoints.add(createChangeLogEntry("removed", path, method, null, oldSummary));
                     }
                 });
             }
@@ -128,19 +130,18 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
                     Map<String, Object> oldMethods = (Map<String, Object>) oldPaths.get(path);
                     oldMethods.forEach((method, oldMethodDetails) -> {
                         String oldSummary = (oldMethodDetails != null) ? ((Map<String, Object>) oldMethodDetails).get("summary").toString() : null;
-                        changedEndpoints.add(createChangeLogEntry("removed", path, method, null, oldSummary, currentVersion));
+                        changedEndpoints.add(createChangeLogEntry("removed", path, method, null, oldSummary));
                     });
                 });
 
         return changedEndpoints;
     }
 
-    private Map<String, Object> createChangeLogEntry(String changeType, String path, String method, String newSummary, String oldSummary, String version) {
+    private Map<String, Object> createChangeLogEntry(String changeType, String path, String method, String newSummary, String oldSummary) {
         Map<String, Object> logEntry = new HashMap<>();
         logEntry.put("changeType", changeType);
         logEntry.put("endpoint", path);
         logEntry.put("method", method);
-        logEntry.put("version", version);
 
         if (newSummary != null) {
             logEntry.put("summary", newSummary);
