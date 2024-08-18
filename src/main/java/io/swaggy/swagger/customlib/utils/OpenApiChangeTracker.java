@@ -45,19 +45,10 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
             String currentVersion = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
 
             List<Map<String, Object>> changedEndpoints = findChangedEndpoints(oldSpec, newSpec);
-            if (!changedEndpoints.isEmpty()) {
-                updateChangeLog(objectMapper, changedEndpoints, currentVersion);
-            }
-
             List<Map<String, Object>> changedParameters = findChangedParameters(oldSpec, newSpec);
-            if (!changedParameters.isEmpty()) {
-                updateChangeLog(objectMapper, changedParameters, currentVersion);
-            }
-
             List<Map<String, Object>> changedSchemas = findChangedSchemas(oldSpec, newSpec);
-            if (!changedSchemas.isEmpty()) {
-                updateChangeLog(objectMapper, changedSchemas, currentVersion);
-            }
+
+            updateChangeLog(objectMapper, changedEndpoints, changedParameters, changedSchemas, currentVersion);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -88,7 +79,11 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
         objectMapper.writeValue(file, data);
     }
 
-    private void updateChangeLog(ObjectMapper objectMapper, List<Map<String, Object>> differences, String currentVersion) throws IOException {
+    private void updateChangeLog(ObjectMapper objectMapper,
+                                 List<Map<String, Object>> changedEndpoints,
+                                 List<Map<String, Object>> changedParameters,
+                                 List<Map<String, Object>> changedSchemas,
+                                 String currentVersion) throws IOException {
         File changeLogFile = new File(changeLogPath);
         List<Map<String, Object>> existingChangeLog = new ArrayList<>();
         if (changeLogFile.exists()) {
@@ -96,12 +91,29 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
         }
 
         Map<String, Object> newLogEntry = new HashMap<>();
-        newLogEntry.put("version", currentVersion);
-        newLogEntry.put("changes", differences);
+        boolean flag = false;
 
-        // change log
-        existingChangeLog.add(0, newLogEntry);
-        saveToFile(objectMapper, changeLogPath, existingChangeLog);
+        if (!changedEndpoints.isEmpty()) {
+            newLogEntry.put("changes", changedEndpoints);
+            flag = true;
+        }
+        if (!changedParameters.isEmpty()) {
+            newLogEntry.put("changes", changedParameters);
+            flag = true;
+        }
+        if (!changedSchemas.isEmpty()) {
+            newLogEntry.put("changes", changedSchemas);
+            flag = true;
+        }
+
+        if (flag) {
+            newLogEntry.put("version", currentVersion);
+
+            // change log
+            existingChangeLog.add(0, newLogEntry);
+            saveToFile(objectMapper, changeLogPath, existingChangeLog);
+        }
+
     }
 
     private List<Map<String, Object>> findChangedEndpoints(Map<String, Object> oldSpec, Map<String, Object> newSpec) {
