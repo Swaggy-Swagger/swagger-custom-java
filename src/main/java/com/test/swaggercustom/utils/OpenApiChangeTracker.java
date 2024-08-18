@@ -47,6 +47,12 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
             List<Map<String, Object>> differences = findChangedEndpoints(oldSpec, newSpec);
             updateChangeLog(objectMapper, differences, currentVersion);
 
+            List<Map<String, Object>> changedParameters = findChangedParameters(oldSpec, newSpec);
+            updateChangeLog(objectMapper, changedParameters, currentVersion);
+
+            List<Map<String, Object>> changedSchemas = findChangedSchemas(oldSpec, newSpec);
+            updateChangeLog(objectMapper, changedSchemas, currentVersion);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -148,6 +154,126 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
         }
         if (oldSummary != null) {
             logEntry.put("oldSummary", oldSummary);
+        }
+
+        return logEntry;
+    }
+
+    private List<Map<String, Object>> findChangedSchemas(Map<String, Object> oldSpec, Map<String, Object> newSpec) {
+        List<Map<String, Object>> schemaChanges = new ArrayList<>();
+
+        // Extract the schemas from old and new specs
+        Map<String, Object> oldSchemas = (Map<String, Object>) oldSpec.get("components");
+        oldSchemas = oldSchemas != null ? (Map<String, Object>) oldSchemas.get("schemas") : new HashMap<>();
+
+        Map<String, Object> newSchemas = (Map<String, Object>) newSpec.get("components");
+        newSchemas = newSchemas != null ? (Map<String, Object>) newSchemas.get("schemas") : new HashMap<>();
+
+        // Iterate over the schemas in new spec
+        Map<String, Object> finalOldSchemas = oldSchemas;
+
+        newSchemas.forEach((schemaName, newSchema) -> {
+            Map<String, Object> oldSchema = (Map<String, Object>) finalOldSchemas.get(schemaName);
+
+            if (oldSchema == null) {
+                // Schema added
+                schemaChanges.add(createSchemaChangeLogEntry("schema_added", schemaName, (Map<String, Object>) newSchema, null));
+            } else if (!oldSchema.equals(newSchema)) {
+                // Schema modified
+                schemaChanges.add(createSchemaChangeLogEntry("schema_modified", schemaName, (Map<String, Object>) newSchema, oldSchema));
+            }
+        });
+
+        // Iterate over old schemas to find removed schemas
+        Map<String, Object> finalNewSchemas = newSchemas;
+
+        oldSchemas.forEach((schemaName, oldSchema) -> {
+            if (!finalNewSchemas.containsKey(schemaName)) {
+                schemaChanges.add(createSchemaChangeLogEntry("schema_removed", schemaName, null, (Map<String, Object>) oldSchema));
+            }
+        });
+
+        return schemaChanges;
+    }
+
+    private Map<String, Object> createSchemaChangeLogEntry(String changeType, String schemaName, Map<String, Object> newSchema, Map<String, Object> oldSchema) {
+        Map<String, Object> logEntry = new HashMap<>();
+        logEntry.put("changeType", changeType);
+        logEntry.put("schemaName", schemaName);
+
+        if (newSchema != null) {
+            logEntry.put("newSchema", newSchema);
+        }
+        if (oldSchema != null) {
+            logEntry.put("oldSchema", oldSchema);
+        }
+
+        return logEntry;
+    }
+
+
+    private List<Map<String, Object>> findChangedParameters(Map<String, Object> oldSpec, Map<String, Object> newSpec) {
+        List<Map<String, Object>> changedParameters = new ArrayList<>();
+
+        // Get paths from both old and new specs
+        Map<String, Object> oldPaths = (Map<String, Object>) oldSpec.getOrDefault("paths", new HashMap<>());
+        Map<String, Object> newPaths = (Map<String, Object>) newSpec.getOrDefault("paths", new HashMap<>());
+
+        // Iterate over new paths to detect added or modified parameters
+        newPaths.forEach((path, newMethods) -> {
+            Map<String, Object> oldMethods = (Map<String, Object>) oldPaths.get(path);
+
+            ((Map<String, Object>) newMethods).forEach((method, newMethodDetails) -> {
+                Object oldMethodDetails = (oldMethods != null) ? oldMethods.get(method) : null;
+
+                // Skip comparison if oldMethodDetails is null
+                if (oldMethodDetails == null) {
+                    return;
+                }
+
+                List<Map<String, Object>> newParameters = (List<Map<String, Object>>) ((Map<String, Object>) newMethodDetails).get("parameters");
+                List<Map<String, Object>> oldParameters = (List<Map<String, Object>>) ((Map<String, Object>) oldMethodDetails).get("parameters");
+
+                if (oldParameters == null && newParameters != null) {
+                    // Parameters added
+                    changedParameters.add(createParameterChangeLogEntry("parameters_added", path, method, newParameters, null));
+                } else if (oldParameters != null && newParameters == null) {
+                    // Parameters removed
+                    changedParameters.add(createParameterChangeLogEntry("parameters_removed", path, method, null, oldParameters));
+                } else if (oldParameters != null && newParameters != null && !oldParameters.equals(newParameters)) {
+                    // Parameters modified
+                    changedParameters.add(createParameterChangeLogEntry("parameters_modified", path, method, newParameters, oldParameters));
+                }
+            });
+        });
+
+        // Iterate over old paths to detect removed parameters
+        oldPaths.forEach((path, oldMethods) -> {
+            if (!newPaths.containsKey(path)) {
+                ((Map<String, Object>) oldMethods).forEach((method, oldMethodDetails) -> {
+                    List<Map<String, Object>> oldParameters = (List<Map<String, Object>>) ((Map<String, Object>) oldMethodDetails).get("parameters");
+                    if (oldParameters != null) {
+                        // Parameters removed because the entire endpoint was removed
+                        changedParameters.add(createParameterChangeLogEntry("parameters_removed", path, method, null, oldParameters));
+                    }
+                });
+            }
+        });
+
+        return changedParameters;
+    }
+
+    private Map<String, Object> createParameterChangeLogEntry(String changeType, String path, String method, List<Map<String, Object>> newParameters, List<Map<String, Object>> oldParameters) {
+        Map<String, Object> logEntry = new HashMap<>();
+        logEntry.put("changeType", changeType);
+        logEntry.put("endpoint", path);
+        logEntry.put("method", method);
+
+        if (newParameters != null) {
+            logEntry.put("newParameters", newParameters);
+        }
+        if (oldParameters != null) {
+            logEntry.put("oldParameters", oldParameters);
         }
 
         return logEntry;
