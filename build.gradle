@@ -36,6 +36,7 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
+            groupId = 'io.swaggy.swagger'
             artifactId = 'customLib'
         }
     }
