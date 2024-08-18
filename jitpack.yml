@@ -5,5 +5,5 @@ build:
   publish:
     group: io.swaggy.swagger
     artifact: customLib
-    version: 0.0.1-SNAPSHOT
+    version: 0.0.1
     target: build/libs/*.jar
