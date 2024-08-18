@@ -44,14 +44,20 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
             // current version
             String currentVersion = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
 
-            List<Map<String, Object>> differences = findChangedEndpoints(oldSpec, newSpec);
-            updateChangeLog(objectMapper, differences, currentVersion);
+            List<Map<String, Object>> changedEndpoints = findChangedEndpoints(oldSpec, newSpec);
+            if (!changedEndpoints.isEmpty()) {
+                updateChangeLog(objectMapper, changedEndpoints, currentVersion);
+            }
 
             List<Map<String, Object>> changedParameters = findChangedParameters(oldSpec, newSpec);
-            updateChangeLog(objectMapper, changedParameters, currentVersion);
+            if (!changedParameters.isEmpty()) {
+                updateChangeLog(objectMapper, changedParameters, currentVersion);
+            }
 
             List<Map<String, Object>> changedSchemas = findChangedSchemas(oldSpec, newSpec);
-            updateChangeLog(objectMapper, changedSchemas, currentVersion);
+            if (!changedSchemas.isEmpty()) {
+                updateChangeLog(objectMapper, changedSchemas, currentVersion);
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
