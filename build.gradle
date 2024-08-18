@@ -35,8 +35,10 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
+            artifactId = 'customLib'
         }
     }
+
     repositories {
         mavenLocal()
     }
