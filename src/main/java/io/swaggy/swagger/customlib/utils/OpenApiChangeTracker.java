@@ -94,15 +94,15 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
         boolean flag = false;
 
         if (!changedEndpoints.isEmpty()) {
-            newLogEntry.put("changes", changedEndpoints);
+            newLogEntry.put("endpointChanges", changedEndpoints);
             flag = true;
         }
         if (!changedParameters.isEmpty()) {
-            newLogEntry.put("changes", changedParameters);
+            newLogEntry.put("parameterChanges", changedParameters);
             flag = true;
         }
         if (!changedSchemas.isEmpty()) {
-            newLogEntry.put("changes", changedSchemas);
+            newLogEntry.put("schemaChanges", changedSchemas);
             flag = true;
         }
 
