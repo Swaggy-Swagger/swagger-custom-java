@@ -1,2 +1,12 @@
 jdk:
   - openjdk17
+
+install:
+  - ./gradlew clean install
+
+build:
+  publish:
+    group: io.swaggy.swagger
+    artifact: customLib
+    version: 0.0.1-SNAPSHOT
+    target: build/libs/*.jar
