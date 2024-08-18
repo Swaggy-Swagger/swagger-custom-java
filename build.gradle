@@ -38,10 +38,6 @@ publishing {
             artifactId = 'customLib'
         }
     }
-
-    repositories {
-        mavenLocal()
-    }
 }
 
 tasks.named('test') {
