@@ -1,10 +1,10 @@
-package com.test.swaggercustom;
+package io.swaggy.swagger.customlib;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SwaggerCustomApplicationTests {
+class CustomLibApplicationTests {
 
     @Test
     void contextLoads() {

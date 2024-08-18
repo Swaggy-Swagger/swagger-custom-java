@@ -1,4 +1,4 @@
-package com.test.swaggercustom.utils;
+package io.swaggy.swagger.customlib.utils;
 
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.tree.ClassNode;

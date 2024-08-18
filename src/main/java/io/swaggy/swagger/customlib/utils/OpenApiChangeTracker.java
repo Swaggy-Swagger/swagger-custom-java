@@ -1,4 +1,4 @@
-package com.test.swaggercustom.utils;
+package io.swaggy.swagger.customlib.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;

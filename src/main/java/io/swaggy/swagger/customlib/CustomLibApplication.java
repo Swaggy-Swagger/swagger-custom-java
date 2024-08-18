@@ -1,13 +1,13 @@
-package com.test.swaggercustom;
+package io.swaggy.swagger.customlib;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SwaggerCustomApplication {
+public class CustomLibApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SwaggerCustomApplication.class, args);
+        SpringApplication.run(CustomLibApplication.class, args);
     }
 
 }

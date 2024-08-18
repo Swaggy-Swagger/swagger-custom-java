@@ -1,4 +1,4 @@
-package com.test.swaggercustom.test;
+package io.swaggy.swagger.customlib.test;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
