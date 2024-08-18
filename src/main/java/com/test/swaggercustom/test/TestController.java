@@ -26,6 +26,7 @@ public class TestController {
 
     @Operation(summary = "일정 가져오기")
     @GetMapping("/{id}")
-    public void getPlan(@PathVariable Long id) {
+    public TestDto getPlan(@PathVariable Long id, @RequestParam int testNum) {
+        return new TestDto();
     }
 }
