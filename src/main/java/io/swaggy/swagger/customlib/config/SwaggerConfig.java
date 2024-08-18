@@ -1,6 +1,6 @@
-package com.test.swaggercustom.config;
+package io.swaggy.swagger.customlib.config;
 
-import com.test.swaggercustom.utils.ControllerMethodOrderUtil;
+import io.swaggy.swagger.customlib.utils.ControllerMethodOrderUtil;
 import io.swagger.v3.oas.models.Paths;
 import org.springdoc.core.customizers.OpenApiCustomizer;
 import org.springframework.context.ApplicationContext;
