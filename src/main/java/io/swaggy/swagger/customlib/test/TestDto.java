@@ -1,4 +1,4 @@
-package com.test.swaggercustom.test;
+package io.swaggy.swagger.customlib.test;
 
 public class TestDto {
     private String name = "testname";
