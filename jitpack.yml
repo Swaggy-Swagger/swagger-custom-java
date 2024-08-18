@@ -1,9 +1,6 @@
 jdk:
   - openjdk17
 
-install:
-  - ./gradlew clean install
-
 build:
   publish:
     group: io.swaggy.swagger
