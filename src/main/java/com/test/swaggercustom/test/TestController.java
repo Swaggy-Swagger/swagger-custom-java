@@ -1,11 +1,8 @@
-package com.test.swaggercustom;
+package com.test.swaggercustom.test;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "Plan API for Test")
 @RestController
@@ -19,11 +16,16 @@ public class TestController {
 
     @Operation(summary = "일정 추가하기")
     @PostMapping
-    public void createPlan() {
+    public void createPlan(@RequestBody TestDto testDto) {
+    }
+
+    @Operation(summary = "일정 전체 가져오기")
+    @GetMapping
+    public void getAllPlans() {
     }
 
     @Operation(summary = "일정 가져오기")
-    @GetMapping
-    public void getPlan() {
+    @GetMapping("/{id}")
+    public void getPlan(@PathVariable Long id) {
     }
 }
