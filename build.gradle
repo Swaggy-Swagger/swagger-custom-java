@@ -35,6 +35,8 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
+            groupId = 'io.swaggy.swagger'
+            artifactId = 'customLib'
 
             pom {
                 groupId = 'io.swaggy.swagger'
@@ -53,4 +55,11 @@ publishing {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+tasks.named('bootJar') {
+    enabled = false
+}
+tasks.named('jar') {
+    enabled = true
 }
