@@ -35,8 +35,6 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-            group = 'io.swaggy.swagger'
-            artifactId = 'customLib'
         }
     }
     repositories {
@@ -46,4 +44,9 @@ publishing {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+tasks.jar {
+    enabled = true
+    archiveClassifier.set("")
 }
