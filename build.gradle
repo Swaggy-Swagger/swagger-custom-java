@@ -35,11 +35,12 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
+            group = 'io.swaggy.swagger'
+            artifactId = 'customLib'
         }
     }
     repositories {
         mavenLocal()
-        maven { url 'https://jitpack.io' }
     }
 }
 
