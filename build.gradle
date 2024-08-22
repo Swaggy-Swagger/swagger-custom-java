@@ -37,18 +37,6 @@ publishing {
             from components.java
             groupId = 'io.swaggy.swagger'
             artifactId = 'customLib'
-
-            pom {
-                groupId = 'io.swaggy.swagger'
-                artifactId = 'customLib'
-                version = '0.0.1-SNAPSHOT'
-
-                scm {
-                    connection = 'scm:git:git://github.com/Swaggy-Swagger/swagger-custom-java.git'
-                    developerConnection = 'scm:git:ssh://github.com/Swaggy-Swagger/swagger-custom-java.git'
-                    url = 'https://github.com/Swaggy-Swagger/swagger-custom-java'
-                }
-            }
         }
     }
 }
