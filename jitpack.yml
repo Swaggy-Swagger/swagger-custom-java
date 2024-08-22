@@ -1,2 +1,4 @@
 jdk:
   - openjdk17
+commands:
+  - ./gradlew clean build publish -Pgroup=io.swaggy.swagger -Partifact=customLib -Pversion=0.0.1-SNAPSHOT
