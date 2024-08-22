@@ -16,7 +16,6 @@ java {
 
 repositories {
     mavenCentral()
-    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -36,11 +35,22 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-            artifactId = 'customLib'
         }
+    }
+    repositories {
+        mavenLocal()
     }
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+tasks.named('bootJar') {
+    enabled = false
+}
+
+tasks.named('jar'){
+    enabled = true
+    archiveClassifier.set("")
 }
