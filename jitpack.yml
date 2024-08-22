@@ -1,6 +1,5 @@
 jdk:
   - openjdk17
-before_install:
-  - sdk update
 install:
+  - export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
   - ./gradlew clean build publish -Pgroup=io.swaggy.swagger -Partifact=customLib -Pversion=0.0.1-SNAPSHOT
