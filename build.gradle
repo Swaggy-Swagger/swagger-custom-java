@@ -39,6 +39,7 @@ publishing {
     }
     repositories {
         mavenLocal()
+        maven { url 'https://jitpack.io' }
     }
 }
 
