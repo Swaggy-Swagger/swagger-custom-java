@@ -1,4 +1,4 @@
-package io.swaggy.swagger.customlib.utils;
+package io.swaggy.swagger.customlib.model;
 
 import java.util.ArrayList;
 import java.util.List;
