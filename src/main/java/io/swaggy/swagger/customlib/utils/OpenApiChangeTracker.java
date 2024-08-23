@@ -62,7 +62,6 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
         return endpointChanged || parameterChanged || schemaChanged;
     }
 
-
     private void addCustomFieldsToOpenApi(OpenAPI openApi) {
         openApi.getPaths().forEach((path, pathItem) -> {
             pathItem.readOperationsMap().forEach((httpMethod, operation) -> {
@@ -79,9 +78,6 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
             });
         });
     }
-
-
-
 
     private void saveAndTrackChanges(OpenAPI openAPI) {
         try {
