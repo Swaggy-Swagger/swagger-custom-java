@@ -1,4 +1,4 @@
-package io.swaggy.swagger.customlib.utils;
+package io.swaggy.swagger.customlib.model;
 
 public class MethodPath {
     private String path;

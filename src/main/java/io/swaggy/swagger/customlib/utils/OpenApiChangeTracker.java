@@ -3,6 +3,8 @@ package io.swaggy.swagger.customlib.utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import io.swagger.v3.oas.models.OpenAPI;
+import io.swaggy.swagger.customlib.model.ChangesInPaths;
+import io.swaggy.swagger.customlib.model.MethodPath;
 import org.springdoc.core.customizers.OpenApiCustomizer;
 import org.springframework.stereotype.Component;
 
