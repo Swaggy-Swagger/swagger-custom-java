@@ -24,10 +24,59 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
     private final String oldFilePath = "./logs/old_openapi.json";
 
     private Map<String, List<MethodPath>> schemaPaths = new HashMap<>();
+    private List<Map<String, Object>> changedSchemas;
+    private ChangesInPaths changesInPaths;
 
     @Override
     public void customise(OpenAPI openApi) {
         saveAndTrackChanges(openApi);
+        addCustomFieldsToOpenApi(openApi);
+    }
+
+    private boolean checkIfChanged(String path, String httpMethod, ChangesInPaths changesInPaths) {
+        // check changes in endpoints
+        boolean endpointChanged = changesInPaths.getChangedEndpoints().stream()
+                .anyMatch(endpoint ->
+                        endpoint.get("endpoint").equals(path) &&
+                                endpoint.get("method").toString().equalsIgnoreCase(httpMethod)
+                );
+
+        // check changes in parameters
+        boolean parameterChanged = changesInPaths.getChangedParameters().stream()
+                .anyMatch(param ->
+                        param.get("endpoint").equals(path) &&
+                                param.get("method").toString().equalsIgnoreCase(httpMethod)
+                );
+
+        // check changes in schemas
+        boolean schemaChanged = changedSchemas.stream()
+                .anyMatch(schema -> {
+                    List<Map<String, Object>> pathInfoList = (List<Map<String, Object>>) schema.get("pathInfo");
+                    return pathInfoList.stream()
+                            .anyMatch(pathInfo ->
+                                    pathInfo.get("path").equals(path) &&
+                                            pathInfo.get("method").toString().equalsIgnoreCase(httpMethod)
+                            );
+                });
+
+        return endpointChanged || parameterChanged || schemaChanged;
+    }
+
+    private void addCustomFieldsToOpenApi(OpenAPI openApi) {
+        openApi.getPaths().forEach((path, pathItem) -> {
+            pathItem.readOperationsMap().forEach((httpMethod, operation) -> {
+                String method = httpMethod.toString();
+                boolean isChanged = checkIfChanged(path, method, changesInPaths);
+
+                // add custom field to operation
+                Map<String, Object> extensions = operation.getExtensions();
+                if (extensions == null) {
+                    extensions = new HashMap<>();
+                    operation.setExtensions(extensions);
+                }
+                extensions.put("isChanged", isChanged);
+            });
+        });
     }
 
     private void saveAndTrackChanges(OpenAPI openAPI) {
@@ -48,8 +97,8 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
             // current version
             String currentVersion = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
 
-            ChangesInPaths changesInPaths = findChangesInPaths(oldSpec, newSpec);
-            List<Map<String, Object>> changedSchemas = findChangedSchemas(oldSpec, newSpec);
+            this.changesInPaths = findChangesInPaths(oldSpec, newSpec);
+            this.changedSchemas = findChangedSchemas(oldSpec, newSpec);
 
             updateChangeLog(objectMapper, changesInPaths.getChangedEndpoints(), changesInPaths.getChangedParameters(), changedSchemas, currentVersion);
 
