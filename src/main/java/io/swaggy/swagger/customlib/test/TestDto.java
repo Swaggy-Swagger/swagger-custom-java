@@ -1,8 +1,8 @@
 package io.swaggy.swagger.customlib.test;
 
 public class TestDto {
-    private String name = "testname";
-    private int count1 = 100;
+    private String name;
+    private int count;
 
     public TestDto() {
     }
@@ -11,7 +11,7 @@ public class TestDto {
         return name;
     }
 
-    public int getCount1() {
-        return count1;
+    public int getCount() {
+        return count;
     }
 }
