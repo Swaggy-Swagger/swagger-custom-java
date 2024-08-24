@@ -74,7 +74,7 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
                     extensions = new HashMap<>();
                     operation.setExtensions(extensions);
                 }
-                extensions.put("is_changed", isChanged);
+                extensions.put("isChanged", isChanged);
             });
         });
     }
