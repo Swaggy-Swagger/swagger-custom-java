@@ -33,7 +33,7 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
         addCustomFieldsToOpenApi(openApi);
     }
 
-    private boolean checkIfChanged(String path, String httpMethod, ChangesInPaths changesInPaths) {
+    private boolean checkIfChanged(String path, String httpMethod) {
         // check changes in endpoints
         boolean endpointChanged = changesInPaths.getChangedEndpoints().stream()
                 .anyMatch(endpoint ->
@@ -52,7 +52,7 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
         boolean schemaChanged = changedSchemas.stream()
                 .anyMatch(schema -> {
                     List<Map<String, Object>> pathInfoList = (List<Map<String, Object>>) schema.get("pathInfo");
-                    return pathInfoList.stream()
+                    return pathInfoList != null && pathInfoList.stream()
                             .anyMatch(pathInfo ->
                                     pathInfo.get("path").equals(path) &&
                                             pathInfo.get("method").toString().equalsIgnoreCase(httpMethod)
@@ -66,7 +66,7 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
         openApi.getPaths().forEach((path, pathItem) -> {
             pathItem.readOperationsMap().forEach((httpMethod, operation) -> {
                 String method = httpMethod.toString();
-                boolean isChanged = checkIfChanged(path, method, changesInPaths);
+                boolean isChanged = checkIfChanged(path, method);
 
                 // add custom field to operation
                 Map<String, Object> extensions = operation.getExtensions();
