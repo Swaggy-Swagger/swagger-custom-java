@@ -185,12 +185,19 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
                 /*
                 find differences in endpoints
                  */
-                String newSummary = (newMethodDetails != null) ? ((Map<String, Object>) newMethodDetails).get("summary").toString() : null;
-                String oldSummary = (oldMethodDetails != null) ? ((Map<String, Object>) oldMethodDetails).get("summary").toString() : null;
+                String newSummary = Optional.ofNullable(newMethodDetails)
+                        .map(details -> (Map<String, Object>) details)
+                        .map(map -> (String) map.get("summary"))
+                        .orElse(null);
+
+                String oldSummary = Optional.ofNullable(oldMethodDetails)
+                        .map(details -> (Map<String, Object>) details)
+                        .map(map -> (String) map.get("summary"))
+                        .orElse(null);
 
                 if (oldMethodDetails == null) {
-                    changedEndpoints.add(createEndPointChangeLogEntry("endpointAdded", path, method, newSummary, oldSummary));
-                } else if (!newSummary.equals(oldSummary)) {
+                    changedEndpoints.add(createEndPointChangeLogEntry("endpointAdded", path, method, newSummary, null));
+                } else if (!Objects.equals(newSummary, oldSummary)) {
                     changedEndpoints.add(createEndPointChangeLogEntry("endpointModified", path, method, newSummary, oldSummary));
                 }
 
