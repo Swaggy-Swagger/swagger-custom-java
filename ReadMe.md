@@ -21,9 +21,7 @@ dependencies {
 }
 ```
 
-## Features
-### UI
-- Screenshot
+## How to Apply Features
 
 ### Order controller methods by code line
 ```java
@@ -52,4 +50,11 @@ public class YourOpenApiConfig {
     }
 }
 ```
+
+### UI
+<img width="1624" alt="스크린샷 2024-08-28 오후 11 23 15" src="https://github.com/user-attachments/assets/09fe68aa-ebe7-4592-beb5-3d4f3a1eb8a1">
+<img width="1624" alt="스크린샷 2024-08-28 오후 11 24 36" src="https://github.com/user-attachments/assets/b09bf788-df68-4975-82cf-dc623d8e4ddc">
+<img width="1624" alt="스크린샷 2024-08-28 오후 11 24 29" src="https://github.com/user-attachments/assets/c1181e35-da40-4124-b56c-d1bd9ea35c76">
+<img width="1624" alt="스크린샷 2024-08-28 오후 10 54 36" src="https://github.com/user-attachments/assets/c36539b7-0e2d-474a-b074-59e007feef8a">
+<img width="1624" alt="스크린샷 2024-08-28 오후 10 54 12" src="https://github.com/user-attachments/assets/9c6e1e6f-4949-4f05-a695-10332ce32720">
 
