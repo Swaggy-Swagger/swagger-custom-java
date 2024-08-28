@@ -1,6 +1,15 @@
 # Swaggy Swagger - swagger-custom-java
+
+[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B47288%2Fgithub.com%2FSwaggy-Swagger%2Fswagger-custom-java.svg?type=shield&issueType=license)](https://app.fossa.com/projects/custom%2B47288%2Fgithub.com%2FSwaggy-Swagger%2Fswagger-custom-java?ref=badge_shield&issueType=license)
+[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B47288%2Fgithub.com%2FSwaggy-Swagger%2Fswagger-custom-java.svg?type=shield&issueType=security)](https://app.fossa.com/projects/custom%2B47288%2Fgithub.com%2FSwaggy-Swagger%2Fswagger-custom-java?ref=badge_shield&issueType=security)
+[![License](https://img.shields.io/github/license/Swaggy-Swagger/swagger-custom-java?logo=github&color=blue")](./LICENSE)
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FSwaggy-Swagger%2Fswagger-custom-java&count_bg=%2328DBE6&title_bg=%232D3540&icon=&icon_color=%23E7E7E7&title=hits)](https://hits.seeyoufarm.com)
 > A Spring Boot Library to make your Swagger Experience better
 
+## Requirements
+- Java 17
+
+## Installation
 ### Add dependency to your project
 ```groovy
 repositories {
@@ -10,8 +19,6 @@ repositories {
 
 dependencies {
     implementation 'com.github.Swaggy-Swagger:swagger-custom-java:main-SNAPSHOT'
-    implementation 'org.ow2.asm:asm:9.2'
-    implementation 'org.ow2.asm:asm-tree:9.2'
 }
 ```
 
@@ -19,7 +26,7 @@ dependencies {
 ### UI
 - Screenshot
 
-### order controller methods by code line
+### Order controller methods by code line
 ```java
 import io.swaggy.swagger.customlib.config.SwaggyConfig;
 import io.swaggy.swagger.customlib.utils.OpenApiChangeTracker;
@@ -32,7 +39,7 @@ import org.springframework.context.annotation.Import;
 public class YourOpenApiConfig {
 }
 ```
-### track and save changes in api endpoints, parameters, dtos, etc
+### Track and save changes in api endpoints, parameters, dtos, etc
 ```java
 import io.swaggy.swagger.customlib.utils.OpenApiChangeTracker;
 import org.springdoc.core.customizers.OpenApiCustomizer;
