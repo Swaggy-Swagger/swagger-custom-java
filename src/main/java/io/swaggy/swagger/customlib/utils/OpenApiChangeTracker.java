@@ -33,7 +33,7 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
         addCustomFieldsToOpenApi(openApi);
     }
 
-    private boolean checkIfChanged(String path, String httpMethod) {
+    private boolean[] checkIfChanged(String path, String httpMethod) {
         // check changes in endpoints
         boolean endpointChanged = changesInPaths.getChangedEndpoints().stream()
                 .anyMatch(endpoint ->
@@ -59,14 +59,14 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
                             );
                 });
 
-        return endpointChanged || parameterChanged || schemaChanged;
+        return new boolean[]{endpointChanged, parameterChanged, schemaChanged};
     }
 
     private void addCustomFieldsToOpenApi(OpenAPI openApi) {
         openApi.getPaths().forEach((path, pathItem) -> {
             pathItem.readOperationsMap().forEach((httpMethod, operation) -> {
                 String method = httpMethod.toString();
-                boolean isChanged = checkIfChanged(path, method);
+                boolean[] isChanged = checkIfChanged(path, method);
 
                 // add custom field to operation
                 Map<String, Object> extensions = operation.getExtensions();
@@ -74,7 +74,9 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
                     extensions = new HashMap<>();
                     operation.setExtensions(extensions);
                 }
-                extensions.put("isChanged", isChanged);
+                extensions.put("endpointChanged", isChanged[0]);
+                extensions.put("parameterChanged", isChanged[1]);
+                extensions.put("schemaChanged", isChanged[2]);
             });
         });
     }
