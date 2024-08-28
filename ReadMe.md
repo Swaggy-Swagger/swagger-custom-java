@@ -21,14 +21,14 @@ dependencies {
 
 ### order controller methods by code line
 ```java
-import io.swaggy.swagger.customlib.config.SwaggerConfig;
+import io.swaggy.swagger.customlib.config.SwaggyConfig;
 import io.swaggy.swagger.customlib.utils.OpenApiChangeTracker;
 import org.springdoc.core.customizers.OpenApiCustomizer;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@Import(SwaggerConfig.class)
+@Import(SwaggyConfig.class)
 public class YourOpenApiConfig {
 }
 ```
