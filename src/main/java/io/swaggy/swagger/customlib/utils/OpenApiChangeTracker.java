@@ -33,7 +33,9 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
         addCustomFieldsToOpenApi(openApi);
     }
 
-    private boolean checkIfChanged(String path, String httpMethod) {
+    private List<String> checkIfChanged(String path, String httpMethod) {
+        List<String> changedTypes = new ArrayList<>();
+
         // check changes in endpoints
         boolean endpointChanged = changesInPaths.getChangedEndpoints().stream()
                 .anyMatch(endpoint ->
@@ -59,14 +61,20 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
                             );
                 });
 
-        return endpointChanged || parameterChanged || schemaChanged;
+        // Add types to list if changed
+        if (endpointChanged) changedTypes.add("Endpoint");
+        if (parameterChanged) changedTypes.add("Parameter");
+        if (schemaChanged) changedTypes.add("Schema");
+
+        return changedTypes;
     }
+
 
     private void addCustomFieldsToOpenApi(OpenAPI openApi) {
         openApi.getPaths().forEach((path, pathItem) -> {
             pathItem.readOperationsMap().forEach((httpMethod, operation) -> {
                 String method = httpMethod.toString();
-                boolean isChanged = checkIfChanged(path, method);
+                List<String> isChanged = checkIfChanged(path, method);
 
                 // add custom field to operation
                 Map<String, Object> extensions = operation.getExtensions();
@@ -74,7 +82,8 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
                     extensions = new HashMap<>();
                     operation.setExtensions(extensions);
                 }
-                extensions.put("isChanged", isChanged);
+                extensions.put("isChanged", !isChanged.isEmpty());
+                extensions.put("changedTypes", isChanged);
             });
         });
     }

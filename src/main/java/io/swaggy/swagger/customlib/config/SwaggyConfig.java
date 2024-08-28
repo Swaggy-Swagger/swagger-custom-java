@@ -15,11 +15,11 @@ import java.util.Map;
 
 
 @Configuration
-public class SwaggerConfig {
+public class SwaggyConfig {
 
     private final ApplicationContext applicationContext;
 
-    public SwaggerConfig(ApplicationContext applicationContext) {
+    public SwaggyConfig(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
 
