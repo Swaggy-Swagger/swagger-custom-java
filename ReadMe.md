@@ -1,9 +1,11 @@
-# Swaggy Swagger - swagger-custom-java
+# Swaggy Swagger
 
 [![Jitpack Release](https://jitpack.io/v/Swaggy-Swagger/swagger-custom-java.svg)](https://jitpack.io/#Swaggy-Swagger/swagger-custom-java)
 [![License](https://img.shields.io/github/license/Swaggy-Swagger/swagger-custom-java?logo=github&color=blue")](./LICENSE)
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FSwaggy-Swagger%2Fswagger-custom-java&count_bg=%2328DBE6&title_bg=%232D3540&icon=&icon_color=%23E7E7E7&title=hits)](https://hits.seeyoufarm.com)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSwaggy-Swagger%2Fswagger-custom-java.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FSwaggy-Swagger%2Fswagger-custom-java?ref=badge_shield)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSwaggy-Swagger%2Fswagger-custom-java.svg?type=shield&issueType=security)](https://app.fossa.com/projects/git%2Bgithub.com%2FSwaggy-Swagger%2Fswagger-custom-java?ref=badge_shield&issueType=security)
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FSwaggy-Swagger%2Fswagger-custom-java&count_bg=%2328DBE6&title_bg=%232D3540&icon=&icon_color=%23E7E7E7&title=hits)](https://hits.seeyoufarm.com)
+
 > A Spring Boot Library to make your Swagger Experience better
 
 ## Requirements
@@ -62,4 +64,7 @@ public class YourOpenApiConfig {
 
 
 ## License
+**Swaggy-Swagger** is licensed under the Apache License, Version 2.0.  
+See the [LICENSE](./LICENSE) file for more details.
+
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSwaggy-Swagger%2Fswagger-custom-java.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FSwaggy-Swagger%2Fswagger-custom-java?ref=badge_large)
