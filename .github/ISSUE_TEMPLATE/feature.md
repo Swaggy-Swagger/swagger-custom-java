@@ -1,5 +1,5 @@
 ---
-name: "✅FEATURE"
+name: "✅FEATURE Request"
 about: use this when you want a new feature
 title: "[FEATURE]"
 labels: 'FEATURE'
