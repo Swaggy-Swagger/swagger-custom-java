@@ -22,7 +22,8 @@ Demo Video: [Watch on YouTube](https://www.youtube.com/watch?v=oD8ShZGQrqo)
 </br>
 
 ## Overview
-See [Swaggy-Swagger README.md](https://github.com/Swaggy-Swagger)
+**Swaggy-Swagger** is a library designed to enhance the functionality and user experience of the popular API documentation tool, Swagger.
+See [Swaggy-Swagger README.md](https://github.com/Swaggy-Swagger) for more details.
 
 ## Requirements
 - Java 17
