@@ -62,6 +62,16 @@ public class YourOpenApiConfig {
 <img width="1624" alt="스크린샷 2024-08-28 오후 10 54 12" src="https://github.com/user-attachments/assets/9c6e1e6f-4949-4f05-a695-10332ce32720">
 
 
+## Contributors
+
+Thank you to everyone who contributed to our project.
+
+<a href="https://github.com/Swaggy-Swagger/swagger-custom-java/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Swaggy-Swagger/swagger-custom-java" />
+</a>
+
+_<div align=right>Made with <a href="https://contrib.rocks">contrib.rocks</a></div>_
+
 
 ## License
 **Swaggy-Swagger** is licensed under the Apache License, Version 2.0.  
