@@ -1,5 +1,5 @@
 ---
-name: "🐞BUG"
+name: "🐞BUG Report"
 about: Use this when Swaggy-Swagger breaks something
 title: "[BUG]"
 labels: 'BUG'
