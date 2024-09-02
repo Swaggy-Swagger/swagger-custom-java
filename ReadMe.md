@@ -1,7 +1,7 @@
 # Swaggy Swagger
 <br/>
 <p align="center">
-<img src="https://github.com/user-attachments/assets/98d594cd-1518-49aa-8f61-3aae42c95e6f" width="500" alt="Swaggy-Swagger-Logo" />
+<img src="https://github.com/user-attachments/assets/1650bb7d-cdf0-485c-8cc8-9617d8ea7472" width="350" alt="Swaggy-Swagger-Logo" />
 </p>
 <br/>
 <p align="center">
