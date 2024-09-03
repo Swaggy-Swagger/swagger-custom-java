@@ -72,9 +72,11 @@ public class YourOpenApiConfig {
 ```
 
 ## Ways to contribute
+We always welcome your contributions!
+* If you would like to contribute to the frontend (UI), you can see [this link](https://github.com/Swaggy-Swagger/swaggy-ui?tab=readme-ov-file#ways-to-contribute) for more details.
 
-We always welcome your contributions.<br/>
-See [CONTRIBUTING.md](https://github.com/Swaggy-Swagger/.github/blob/main/profile/CONTRIBUTING.md) for details. 
+
+* Else, if you want to contribute to the backend (server-side), which is this repository, please refer to [this link](https://github.com/Swaggy-Swagger/swagger-custom-java/blob/main/CONTRIBUTING.md).
 
 
 ## Contributors
@@ -93,3 +95,7 @@ _<div align=right>Made with <a href="https://contrib.rocks">contrib.rocks</a></d
 See the [LICENSE](./LICENSE) file for more details.
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSwaggy-Swagger%2Fswagger-custom-java.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FSwaggy-Swagger%2Fswagger-custom-java?ref=badge_large)
+
+
+## Contact
+<a href="mailto:clcc001@naver.com"><img src="https://img.shields.io/badge/mail-d14836?style=flat-square&logo=Gmail&logoColor=white&link=clcc001@naver.com"/></a>
