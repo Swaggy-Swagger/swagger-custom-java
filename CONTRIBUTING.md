@@ -14,7 +14,7 @@ There are several ways you can contribute to Swaggy-Swagger!
 - Start conversation by posting to Discussions about a framework that needs support.
 - If there's anything you'd like to communicate about our project or open source, feel free to post it on Discussions! "We hope that Swaggy-Swagger Discussions will become an active community."
 
-## Working on issues
+## Working on Issues
 
 Feel free to ask for guidelines on how to tackle a problem on [email][email] or open a
 [new issue][new-issues]. This is especially important if you want to add new
@@ -32,13 +32,13 @@ bring those changes into the source repository.
 Steps to get started :
 
 -   Fork Swaggy-Swagger and create a branch from main for the issue you are working on.
--   Make sure you have the make utility installed, along with Java/Spring Boot or JS.
+-   Please ensure that your development environment is set up, including Java/Spring Boot, and the required utilities are installed before you start development. 
 -   Please adhere to the code style that you see around the location you are
     working on.
 -   Commit as you go.
 -   Push your commits to GitHub and create a pull request against the branch of `swagger-custom-java`.
 
-### 🐞 Bug reports
+### 🐞 Bug Reports
 
 We can't fix what we don't know about, so please report problems. This
 includes problems with understanding the documentation, unhelpful error messages,
@@ -47,11 +47,11 @@ and unexpected behavior.
 You can open a new issue by following [this link][new-issues] and choose one of the issue templates.
 Even better, you can submit a Pull Request with a fix.
 
-### ✅ Feature requests
+### ✅ Feature Requests
 
 Please feel free to open an issue using the [feature request template][new-issues].
 
-### 📕 Contributing to the documentation
+### 📕 Contributing to the Documentation
 
 We're always looking for improvements to the documentation that make it more clear and accurate.
 Please let us know how the documentation can be improved such as typos and any content that is missing, unclear or inaccurate.
@@ -75,7 +75,7 @@ updated sort][lru] is good for finding issues like this.
 ---
 
 ## Submitting a Pull Request (PR)
->_If you want to contribute to the frontend (UI), please refer to [this link](https://github.com/Swaggy-Swagger/swaggy-ui?tab=readme-ov-file#ways-to-contribute) for more details._
+>_If you want to contribute to the frontend (UI), please refer to [swaggy-ui](https://github.com/Swaggy-Swagger/swaggy-ui?tab=readme-ov-file#ways-to-contribute) for more details._
 
 Before you submit your Pull Request (PR) consider the following guidelines :
 
