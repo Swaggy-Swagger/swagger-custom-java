@@ -18,12 +18,17 @@
 </p>
 </br>
 
-Demo Video: [Watch on YouTube](https://www.youtube.com/watch?v=oD8ShZGQrqo)
-</br>
+
 
 ## Overview
 **Swaggy-Swagger** is a library designed to enhance the functionality and user experience of the popular API documentation tool, Swagger.
 See [Swaggy-Swagger README.md](https://github.com/Swaggy-Swagger) for more details.
+
+#### Demo Video
+<div>
+<a href="https://www.youtube.com/watch?v=oD8ShZGQrqo"><img src="https://img.shields.io/badge/YOUTUBE-FF0000?style=for-the-badge&logo=YouTube&logoColor=white&link=https://www.youtube.com/watch?v=oD8ShZGQrqo"/></a>
+</div>
+
 
 ## Requirements
 - Java 17
