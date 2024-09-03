@@ -2,7 +2,7 @@
 
 Thank you for your interest in contributing to Swaggy-Swagger!
 
-Good places to start are:
+Good places to start are :
 -   Reading this document
 
 There are several ways you can contribute to Swaggy-Swagger!
@@ -29,7 +29,7 @@ We use the "fork and pull" model [described here][development-models], where
 contributors push changes to their personal fork and create pull requests to
 bring those changes into the source repository.
 
-Steps to get started:
+Steps to get started :
 
 -   Fork Swaggy-Swagger and create a branch from main for the issue you are working on.
 -   Make sure you have the make utility installed, along with Java/Spring Boot or JS.
@@ -70,45 +70,49 @@ still valid. Load up an older issue, double check that it's still true, and
 leave a comment letting us know if it is or is not. The [least recently
 updated sort][lru] is good for finding issues like this.
 
+<br>
+
+---
 
 ## Submitting a Pull Request (PR)
+>_If you want to contribute to the frontend (UI), please refer to [this link](https://github.com/Swaggy-Swagger/swaggy-ui?tab=readme-ov-file#ways-to-contribute) for more details._
 
-Before you submit your Pull Request (PR) consider the following guidelines:
+Before you submit your Pull Request (PR) consider the following guidelines :
 
-1. Search GitHub Pull Requests for an open or closed PR that relates to your submission. You don't want to duplicate effort.
+  1. Search GitHub Pull Requests for an open or closed PR that relates to your submission. You don't want to duplicate effort.
 
-2. Fork this repository to your GitHub
+  2. Fork this repository to your GitHub - 
    [click to fork swagger-custom-java](https://github.com/Swaggy-Swagger/swagger-custom-java/fork)
 
-3. Clone your swagger-custom-java repository :
+   3. Clone your swagger-custom-java repository :
 
-   ```bash
-   git clone https://github.com/{your-github-id}/swagger-custom-java
-   ```
+     ```bash
+     git clone https://github.com/{your-github-id}/swagger-custom-java
+     ```
 
-4. Make your changes in a main branch(or feature branch)
+  4. Make your changes in a main branch(or feature branch)
 
-5. Follow our [style guide](#style-guide). <br>
+  5. Follow our [style guide](#style-guide). <br>
    _This is simply a recommendation, so please feel free to contribute!_
 
-6. Commit your changes using a descriptive commit message that follows our commit message conventions.
+  6. Commit your changes using a descriptive commit message that follows our commit message conventions.
 
-7. Push your branch to GitHub:
+  7. Push your branch to GitHub :
 
-   ```bash
-   git push origin your-branch
-   ```
+     ```bash
+     git push origin your-branch
+     ```
 
-9. In GitHub, send a pull request to `swagger-custom-java:main` or `swagger-custom-java:feature/\* `.
+  8. In GitHub, send a pull request to `swagger-custom-java:main` or `swagger-custom-java:feature/\* `.  
+  
+  > That's it! Thank you for your contribution! 😎 
 
-
-> That's it! Thank you for your contribution! ✨
-
+<br> 
 
 After the pull request is made, one of the Swaggy-Swagger project developers will review your code.
 The review-process will make sure that the proposed changes are sound.
 Please give the assigned reviewer sufficient time, especially during weekends.
-If you don't get a reply, you may ping the core developers on [email][contact].
+If you don't get a reply, you may ping the core developers on [email][email]. 
 
 A merge of Swaggy-Swagger's main-branch and your changes is immediately queued
 to be tested after the pull request is made. In case unforeseen
