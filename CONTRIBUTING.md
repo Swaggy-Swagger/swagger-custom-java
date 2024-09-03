@@ -85,10 +85,9 @@ Before you submit your Pull Request (PR) consider the following guidelines :
    [click to fork swagger-custom-java](https://github.com/Swaggy-Swagger/swagger-custom-java/fork)
 
    3. Clone your swagger-custom-java repository :
-
-     ```bash
-      git clone https://github.com/{your-github-id}/swagger-custom-java
-     ```
+      ```bash
+        git clone https://github.com/{your-github-id}/swagger-custom-java
+      ```
 
   4. Make your changes in a main branch or feature branch.
 
