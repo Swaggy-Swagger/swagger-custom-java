@@ -87,7 +87,7 @@ Before you submit your Pull Request (PR) consider the following guidelines :
    3. Clone your swagger-custom-java repository :
 
      ```bash
-     git clone https://github.com/{your-github-id}/swagger-custom-java
+      git clone https://github.com/{your-github-id}/swagger-custom-java
      ```
 
   4. Make your changes in a main branch or feature branch.
@@ -100,7 +100,7 @@ Before you submit your Pull Request (PR) consider the following guidelines :
   7. Push your branch to GitHub :
 
      ```bash
-     git push origin your-branch
+      git push origin your-branch
      ```
 
   8. In GitHub, send a pull request to `swagger-custom-java:main` or `swagger-custom-java:feature/\* `.  
