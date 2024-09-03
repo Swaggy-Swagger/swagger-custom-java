@@ -79,7 +79,7 @@ updated sort][lru] is good for finding issues like this.
 
 Before you submit your Pull Request (PR) consider the following guidelines :
 
-  1. Search GitHub Pull Requests for an open or closed PR that relates to your submission. You don't want to duplicate effort.
+  1. To avoid duplicating works, please check GitHub Pull Requests for any existing open or closed PRs related to your submission before you start.
 
   2. Fork this repository to your GitHub - 
    [click to fork swagger-custom-java](https://github.com/Swaggy-Swagger/swagger-custom-java/fork)
@@ -90,9 +90,9 @@ Before you submit your Pull Request (PR) consider the following guidelines :
      git clone https://github.com/{your-github-id}/swagger-custom-java
      ```
 
-  4. Make your changes in a main branch(or feature branch)
+  4. Make your changes in a main branch or feature branch.
 
-  5. Follow our [style guide](#style-guide). <br>
+  5. Follow our [STYLE_GUIDE](https://github.com/Swaggy-Swagger/swagger-custom-java/blob/main/STYLE_GUIDE.md). <br>
    _This is simply a recommendation, so please feel free to contribute!_
 
   6. Commit your changes using a descriptive commit message that follows our commit message conventions.
