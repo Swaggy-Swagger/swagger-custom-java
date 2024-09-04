@@ -31,7 +31,8 @@ See [Swaggy-Swagger README.md](https://github.com/Swaggy-Swagger) for more detai
 
 
 ## Requirements
-- Java 17
+- **Java 17 or higher**: This project requires Java version 17 or later.
+- **Spring Boot 3.3.1 or higher**: Ensure that you are using Spring Boot version 3.3.1 or newer for compatibility.
 
 ## Installation
 ### Add dependency to your project
@@ -48,7 +49,7 @@ dependencies {
 
 ## How to Apply Features
 
-### Order controller methods by code line
+### Order controller methods by code line number
 ```java
 import io.swaggy.swagger.customlib.config.SwaggyConfig;
 import io.swaggy.swagger.customlib.utils.OpenApiChangeTracker;
@@ -56,6 +57,7 @@ import org.springdoc.core.customizers.OpenApiCustomizer;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
+// Import 'SwaggyConfig' class to your OpenApi configuration class.
 @Configuration
 @Import(SwaggyConfig.class)
 public class YourOpenApiConfig {
@@ -69,6 +71,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class YourOpenApiConfig {
+    
+    // Register 'OpenApiCustomizer' Bean to your OpenApi configuration class.
     @Bean
     public OpenApiCustomizer openApiCustomizer() {
         return new OpenApiChangeTracker();
