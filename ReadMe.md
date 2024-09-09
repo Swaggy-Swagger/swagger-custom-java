@@ -32,7 +32,7 @@ See [Swaggy-Swagger README.md](https://github.com/Swaggy-Swagger) for more detai
 
 ## Requirements
 - **Java 17 or higher**: This project requires Java version 17 or later.
-- **Spring Boot 3.3.1 or higher**: Ensure that you are using Spring Boot version 3.3.1 or newer for compatibility.
+- **Spring Boot 3.x**: Ensure that you are using Spring Boot version 3.x for compatibility.
 
 ## Installation
 ### Add dependency to your project
