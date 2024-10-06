@@ -19,7 +19,7 @@
 </br>
 
 
-
+English | [한국어](https://github.com/Swaggy-Swagger/swagger-custom-java/blob/main/ReadMe_Korean.md) 
 ## Overview
 **Swaggy-Swagger** is a library designed to enhance the functionality and user experience of the popular API documentation tool, Swagger.
 See [Swaggy-Swagger README.md](https://github.com/Swaggy-Swagger) for more details.
@@ -29,7 +29,6 @@ See [Swaggy-Swagger README.md](https://github.com/Swaggy-Swagger) for more detai
 <a href="https://www.youtube.com/watch?v=oD8ShZGQrqo"><img src="https://img.shields.io/badge/YOUTUBE-FF0000?style=for-the-badge&logo=YouTube&logoColor=white&link=https://www.youtube.com/watch?v=oD8ShZGQrqo"/></a>
 </div>
 
-#### [ReadMe in Korean 한국어 버전 보기](https://github.com/Swaggy-Swagger/swagger-custom-java/blob/main/ReadMe_Korean.md) 
 
 ## Requirements
 - **Java 17 or higher**: This project requires Java version 17 or later.
