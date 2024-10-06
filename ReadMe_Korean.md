@@ -20,23 +20,23 @@
 
 
 
-## Overview
-**Swaggy-Swagger** is a library designed to enhance the functionality and user experience of the popular API documentation tool, Swagger.
-See [Swaggy-Swagger README.md](https://github.com/Swaggy-Swagger) for more details.
+## 개요
+**Swaggy-Swagger** 는 인기 있는 API 문서화 도구인 Swagger의 기능과 사용자 경험을 향상시키기 위해 설계된 라이브러리입니다.
+자세한 정보는 [Swaggy-Swagger README.md](https://github.com/Swaggy-Swagger) 를 참고해주세요.
 
-#### Demo Video
+#### 시연 영상 
 <div>
 <a href="https://www.youtube.com/watch?v=oD8ShZGQrqo"><img src="https://img.shields.io/badge/YOUTUBE-FF0000?style=for-the-badge&logo=YouTube&logoColor=white&link=https://www.youtube.com/watch?v=oD8ShZGQrqo"/></a>
 </div>
 
-#### [ReadMe in Korean 한국어 버전 보기](https://github.com/Swaggy-Swagger/swagger-custom-java/blob/main/ReadMe_Korean.md) 
+#### [ReadMe in English 영어 버전 보기](https://github.com/Swaggy-Swagger/swagger-custom-java?tab=readme-ov-file#swaggy-swagger) 
 
-## Requirements
-- **Java 17 or higher**: This project requires Java version 17 or later.
-- **Spring Boot 3.x**: Ensure that you are using Spring Boot version 3.x for compatibility.
+## 요구사항 
+- **자바 17 이상**: 이 프로젝트는 자바17 이상의 버전이 필요합니다.
+- **스프링 부트 3.x**: 호환성을 위해 스프링 부트 3 이상의 버전을 사용하는지 확인해주세요. 
 
-## Installation
-### Add dependency to your project
+## 설치
+### 프로젝트에 dependency 추가하기 
 ```groovy
 repositories {
     mavenCentral()
@@ -48,9 +48,9 @@ dependencies {
 }
 ```
 
-## How to Apply Features
+## 기능 추가하는 방법 
 
-### Order controller methods by code line number
+### 코드 작성 순서대로 API 정렬하는 기능 
 ```java
 import io.swaggy.swagger.customlib.config.SwaggyConfig;
 import io.swaggy.swagger.customlib.utils.OpenApiChangeTracker;
@@ -58,13 +58,13 @@ import org.springdoc.core.customizers.OpenApiCustomizer;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
-// Import 'SwaggyConfig' class to your OpenApi configuration class.
+// 사용자의 OpenApi 설정 클래스에 'SwaggyConfig' 클래스를 추가해주세요.
 @Configuration
 @Import(SwaggyConfig.class)
 public class YourOpenApiConfig {
 }
 ```
-### Track and save changes in api endpoints, parameters, dtos, etc
+### API 변경 사항 추적하고 저장하는 기능 
 ```java
 import io.swaggy.swagger.customlib.utils.OpenApiChangeTracker;
 import org.springdoc.core.customizers.OpenApiCustomizer;
@@ -73,7 +73,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class YourOpenApiConfig {
     
-    // Register 'OpenApiCustomizer' Bean to your OpenApi configuration class.
+    // 사용자의 OpenApi 설정 클래스에 'OpenApiCustomizer' Bean을 등록해주세요.
     @Bean
     public OpenApiCustomizer openApiCustomizer() {
         return new OpenApiChangeTracker();
@@ -81,17 +81,18 @@ public class YourOpenApiConfig {
 }
 ```
 
-## Ways to contribute
-We always welcome your contributions!
-* If you would like to contribute to the frontend (UI), you can see [swaggy-ui](https://github.com/Swaggy-Swagger/swaggy-ui?tab=readme-ov-file#ways-to-contribute) for more details.
+## 컨트리뷰트 하는 방법
+모든 컨트리뷰트를 환영합니다!
+
+* 프론트엔드(UI)에 컨트리뷰트하고 싶으시다면, 더 자세한 정보는 [swaggy-ui](https://github.com/Swaggy-Swagger/swaggy-ui?tab=readme-ov-file#ways-to-contribute)를 확인해주세요.
 
 
-* Else, if you want to contribute to the backend (server-side), which is this repository, please refer to [CONTRIBUTING.md](https://github.com/Swaggy-Swagger/swagger-custom-java/blob/main/CONTRIBUTING.md).
+* 현재 레포지토리인, 백엔드(서버 사이드)에 컨트리뷰트하고 싶으시다면, [CONTRIBUTING.md](https://github.com/Swaggy-Swagger/swagger-custom-java/blob/main/CONTRIBUTING.md)를 참고해주세요.
 
 
-## Contributors
+## 컨트리뷰터 
 
-Thank you to everyone who contributed to our project.
+**Swaggy-Swagger**에 기여해주신 모든 분들께 감사드립니다.
 
 <a href="https://github.com/Swaggy-Swagger/swagger-custom-java/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Swaggy-Swagger/swagger-custom-java" />
@@ -100,12 +101,12 @@ Thank you to everyone who contributed to our project.
 _<div align=right>Made with <a href="https://contrib.rocks">contrib.rocks</a></div>_
 
 
-## License
-**Swaggy-Swagger** is licensed under the Apache License, Version 2.0.  
-See the [LICENSE](./LICENSE) file for more details.
+## 라이센스
+**Swaggy-Swagger**는 Apache License 2.0 버전 라이센스 하에 있습니다.
+더 자세한 정보는 [LICENSE](https://github.com/Swaggy-Swagger/swagger-custom-java/blob/main/LICENSE)에서 확인해주세요.
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSwaggy-Swagger%2Fswagger-custom-java.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FSwaggy-Swagger%2Fswagger-custom-java?ref=badge_large)
 
 
-## Contact
+## 연락처
 <a href="mailto:clcc001@naver.com"><img src="https://img.shields.io/badge/mail-d14836?style=flat-square&logo=Gmail&logoColor=white&link=clcc001@naver.com"/></a>
