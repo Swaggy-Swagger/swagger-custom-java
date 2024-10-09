@@ -12,7 +12,8 @@ There are several ways you can contribute to Swaggy-Swagger!
 - Submit Documentation issues for insufficient documents, translations.
 - Start conversation at Discussions to provide a good example of preset.
 - Start conversation by posting to Discussions about a framework that needs support.
-- If there's anything you'd like to communicate about our project or open source, feel free to post it on Discussions! "We hope that Swaggy-Swagger Discussions will become an active community."
+- If there's anything you'd like to communicate about our project or open source, feel free to post it on Discussions!  
+  "We hope that Swaggy-Swagger Discussions will become an active community."
 
 ## Working on Issues
 
