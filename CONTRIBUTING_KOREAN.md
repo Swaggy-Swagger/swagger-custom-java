@@ -6,7 +6,7 @@ Swaggy-Swagger에 컨트리뷰트하는 것에 대한 여러분의 관심, 감�
 시작하기에 좋은 위치는 :
 - 이 문서를 읽기  
 
-Swaggy-Swagger에 컨트리뷰트할 수 있는 데에는 다양한 방법이 있습니다!
+Swaggy-Swagger에 컨트리뷰트할 수 있는 다양한 방법이 있습니다!
 
 - 현재 코드의 문제점에 대해 트러블슈팅하기. 
 - 버그나 새로운 기능과 관련된 버그/기능 이슈 생성하기. 
@@ -26,7 +26,7 @@ Swaggy-Swagger 코어 개발자들은 최선을 다해 지원하겠습니다.
 이미 등록된 이슈에 작업을 시작하면, 해당 이슈에 댓글을 남겨 다른 사람들이에게 누군가 작업 중임을 알리세요.
 제출하고 싶은 솔루션에 대해 확신이 없으면 자유롭게 코멘트를 요청하세요.  
 
-우리는 [여기에서 설명되고 있는][development-models] "fork and pull" 모델을 사용합니다.
+Swaggy-Swagger는 [여기에서 설명되고 있는][development-models] "fork and pull" 모델을 사용합니다.
 컨트리뷰터들은 개인 포크에 변경 사항을 푸시하고, 해당 변경 사항을 원본 리포지토리로 반영하기 위해 풀 리퀘스트를 생성합니다.  
 
 
@@ -90,7 +90,7 @@ Pull Request (PR)을 제출하기 전, 다음 지침을 확인해주세요 :
 5. Swaggy-Swagger의 [스타일 가이드](https://github.com/Swaggy-Swagger/swagger-custom-java/blob/main/STYLE_GUIDE.md)를 따라주세요. <br>
    _간단한 추천 사항이므로, 자유롭게 컨트리뷰트해주세요!_
 
-6. Swaggy-Swagger의 커밋 메세지 컨벤션을 따르는 서술적인 커밋 메세지를 남겨 변경사항을 커밋해주세요.
+6. Swaggy-Swagger의 커밋 메세지 컨벤션을 따르는 자세한 커밋 메세지를 남겨 변경사항을 커밋해주세요.
 
 7. 깃허브에 작업한 브랜치를 푸시해주세요 :
 
@@ -109,15 +109,15 @@ Pull Request가 생성되면, Swaggy-Swagger 프로젝트의 개발자 중 한 �
 특히 주말을 포함해 할당된 리뷰어에게 충분한 시간을 주시기 바랍니다.
 답변이 없으면, [이메일][email]로 코어 개발자에게 문의하실 수 있습니다.
 
-Pull Request 생성 후, Swaggy-Swagger의 메인 브랜치와 변경 사항이 merge되면, 즉시 테스트를 위해 큐에 등록됩니다. 
+Pull Request 생성 후, 변경 사항이 반영된 상태의 Swaggy-Swagger의 메인 브랜치가, 즉시 테스트됩니다. 
 이 단계에서 예상치 못한 문제가 발견될 경우(예: 원래 개발하지 않은 환경에서의 실패 등), 도움을 요청할 수 있습니다. 
-이러한 문제를 해결하기 위해 여러분의 브랜치에 추가 커밋을 푸시해주세요.
+이러한 문제를 해결하기 위해서는, 여러분의 브랜치에 추가 커밋을 푸시해주세요.
 
 리뷰어가 필요하다고 판단되는 변경 사항을 지적할 수 있습니다. 이러한 변경 사항을 추가 커밋으로 반영해 주세요; 
 이렇게 하면 리뷰어가 이전에 검토한 코드 이후에 어떤 변화가 있었는 지 확인할 수 있습니다. 
 크고 복잡한 변경 사항은 여러 번의 리뷰와 수정이 필요할 수 있습니다.
 
-리뷰어가 여러분의 Pull Request를 승인하면, Swaggy-Swagger의 main 브랜치에 머지됩니다.
+리뷰어가 Pull Request를 승인하면, Swaggy-Swagger의 main 브랜치에 merge됩니다.
 
 
 [new-issues]: https://github.com/Swaggy-Swagger/swagger-custom-java/issues/new/choose
