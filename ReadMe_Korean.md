@@ -19,9 +19,11 @@
 </br>
 
 
-
+[English](https://github.com/Swaggy-Swagger/swagger-custom-java?tab=readme-ov-file#swaggy-swagger) | 한국어 
 ## 개요
-**Swaggy-Swagger** 는 인기 있는 API 문서화 도구인 Swagger의 기능과 사용자 경험을 향상시키기 위해 설계된 라이브러리입니다.
+**Swaggy-Swagger** 는 인기 있는 API 문서화 도구인 Swagger의 기능과 사용자 경험을 향상시키기 위해 설계된 라이브러리입니다.  
+
+
 자세한 정보는 [Swaggy-Swagger README.md](https://github.com/Swaggy-Swagger) 를 참고해주세요.
 
 #### 시연 영상 
@@ -29,7 +31,6 @@
 <a href="https://www.youtube.com/watch?v=oD8ShZGQrqo"><img src="https://img.shields.io/badge/YOUTUBE-FF0000?style=for-the-badge&logo=YouTube&logoColor=white&link=https://www.youtube.com/watch?v=oD8ShZGQrqo"/></a>
 </div>
 
-#### [ReadMe in English 영어 버전 보기](https://github.com/Swaggy-Swagger/swagger-custom-java?tab=readme-ov-file#swaggy-swagger) 
 
 ## 요구사항 
 - **자바 17 이상**: 이 프로젝트는 자바17 이상의 버전이 필요합니다.
