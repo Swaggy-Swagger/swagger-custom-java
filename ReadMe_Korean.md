@@ -24,7 +24,7 @@
 **Swaggy-Swagger** 는 인기 있는 API 문서화 도구인 Swagger의 기능과 사용자 경험을 향상시키기 위해 설계된 라이브러리입니다.  
 
 
-자세한 정보는 [Swaggy-Swagger README.md](https://github.com/Swaggy-Swagger) 를 참고해주세요.
+자세한 정보는 [Swaggy-Swagger README.md](https://github.com/Swaggy-Swagger/.github/blob/main/profile/README_KOREAN.md) 를 참고해주세요.
 
 #### 시연 영상 
 <div>
