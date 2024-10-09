@@ -88,7 +88,7 @@ public class YourOpenApiConfig {
 * 프론트엔드(UI)에 컨트리뷰트하고 싶으시다면, 더 자세한 정보는 [swaggy-ui](https://github.com/Swaggy-Swagger/swaggy-ui?tab=readme-ov-file#ways-to-contribute)를 확인해주세요.
 
 
-* 현재 레포지토리인, 백엔드(서버 사이드)에 컨트리뷰트하고 싶으시다면, [CONTRIBUTING.md](https://github.com/Swaggy-Swagger/swagger-custom-java/blob/main/CONTRIBUTING.md)를 참고해주세요.
+* 현재 레포지토리인, 백엔드(서버 사이드)에 컨트리뷰트하고 싶으시다면, [CONTRIBUTING.md](https://github.com/Swaggy-Swagger/swagger-custom-java/blob/main/CONTRIBUTING_KOREAN.md)를 참고해주세요.
 
 
 ## 컨트리뷰터 

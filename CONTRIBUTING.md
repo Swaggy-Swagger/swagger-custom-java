@@ -1,4 +1,5 @@
 # Contributing to Swaggy-Swagger
+English | [한국어](https://github.com/Swaggy-Swagger/swagger-custom-java/blob/main/CONTRIBUTING_KOREAN.md)
 
 Thank you for your interest in contributing to Swaggy-Swagger!
 
