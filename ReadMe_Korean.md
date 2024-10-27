@@ -45,7 +45,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.Swaggy-Swagger:swagger-custom-java:0.0.1'
+    implementation 'com.github.Swaggy-Swagger:swagger-custom-java:1.0.0'
 }
 ```
 
