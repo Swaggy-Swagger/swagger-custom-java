@@ -372,26 +372,30 @@ public class OpenApiChangeTracker implements OpenApiCustomizer {
         // Iterate over the schemas in new spec
         Map<String, Object> finalOldSchemas = oldSchemas;
 
-        newSchemas.forEach((schemaName, newSchema) -> {
-            Map<String, Object> oldSchema = (Map<String, Object>) finalOldSchemas.get(schemaName);
+        if (newSchemas != null ) {
+            newSchemas.forEach((schemaName, newSchema) -> {
+                Map<String, Object> oldSchema = (Map<String, Object>) finalOldSchemas.get(schemaName);
 
-            List<MethodPath> schemaMethodPaths = schemaPaths.get(schemaName);
+                List<MethodPath> schemaMethodPaths = schemaPaths.get(schemaName);
 
-            if (oldSchema == null) {
-                schemaChanges.add(createSchemaChangeLogEntry("schemaAdded", schemaMethodPaths, schemaName));
-            } else if (!oldSchema.equals(newSchema)) {
-                schemaChanges.add(createSchemaChangeLogEntry("schemaModified", schemaMethodPaths, schemaName));
-            }
-        });
+                if (oldSchema == null) {
+                    schemaChanges.add(createSchemaChangeLogEntry("schemaAdded", schemaMethodPaths, schemaName));
+                } else if (!oldSchema.equals(newSchema)) {
+                    schemaChanges.add(createSchemaChangeLogEntry("schemaModified", schemaMethodPaths, schemaName));
+                }
+            });
+        }
 
         // Iterate over old schemas to find removed schemas
         Map<String, Object> finalNewSchemas = newSchemas;
 
-        oldSchemas.forEach((schemaName, oldSchema) -> {
-            if (!finalNewSchemas.containsKey(schemaName)) {
-                schemaChanges.add(createSchemaChangeLogEntry("schemaRemoved", null, schemaName));
-            }
-        });
+        if (oldSchemas != null) {
+            oldSchemas.forEach((schemaName, oldSchema) -> {
+                if (!finalNewSchemas.containsKey(schemaName)) {
+                    schemaChanges.add(createSchemaChangeLogEntry("schemaRemoved", null, schemaName));
+                }
+            });
+        }
 
         return schemaChanges;
     }
