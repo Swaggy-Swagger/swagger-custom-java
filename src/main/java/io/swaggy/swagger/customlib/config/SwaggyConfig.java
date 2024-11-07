@@ -29,7 +29,7 @@ public class SwaggyConfig {
             Map<String, Object> controllers = applicationContext.getBeansWithAnnotation(Controller.class);
             List<String> sortedPathsOrder = new ArrayList<>();
             controllers.values().forEach(controller -> {
-                Class<?> controllerClass = controller.getClass();
+                Class<?> controllerClass = getOriginalClass(controller);
                 List<Method> orderedMethods = ControllerMethodOrderUtil.getOrderedMethods(controllerClass);
                 orderedMethods.forEach(method -> {
                     String[] paths = ControllerMethodOrderUtil.getMethodPaths(controllerClass, method);
@@ -49,6 +49,14 @@ public class SwaggyConfig {
             });
             openApi.setPaths(sortedPaths);
         };
+    }
+
+    private Class<?> getOriginalClass(Object controller) {
+        Class<?> controllerClass = controller.getClass();
+        if (controllerClass.getName().contains("$$")) {  // Spring 프록시 클래스 식별
+            return controllerClass.getSuperclass();  // 실제 클래스 타입으로 변경
+        }
+        return controllerClass;
     }
 }
 
