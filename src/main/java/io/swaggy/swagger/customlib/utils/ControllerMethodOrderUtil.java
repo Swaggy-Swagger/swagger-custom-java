@@ -5,7 +5,9 @@ import org.objectweb.asm.tree.ClassNode;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.io.InputStream;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,7 +16,13 @@ public class ControllerMethodOrderUtil {
     public static List<Method> getOrderedMethods(Class<?> controllerClass) {
         try {
             // ASM을 사용하여 클래스의 메서드 순서를 읽어옴
-            ClassReader classReader = new ClassReader(controllerClass.getName());
+            InputStream classInputStream = controllerClass.getClassLoader()
+                    .getResourceAsStream(controllerClass.getName().replace('.', '/') + ".class");
+            if (classInputStream == null) {
+                throw new RuntimeException("Class file not found for " + controllerClass.getName());
+            }
+
+            ClassReader classReader = new ClassReader(classInputStream);
             ClassNode classNode = new ClassNode();
             classReader.accept(classNode, 0);
 
@@ -38,7 +46,7 @@ public class ControllerMethodOrderUtil {
             e.printStackTrace();
 //            throw new RuntimeException("Failed to read class with ASM", e);
         }
-        return null;
+        return new ArrayList<>();
     }
 
     public static String[] getMethodPaths(Class<?> controllerClass, Method method) {
