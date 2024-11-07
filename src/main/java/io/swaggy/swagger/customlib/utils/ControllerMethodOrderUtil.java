@@ -35,8 +35,10 @@ public class ControllerMethodOrderUtil {
                     })
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            throw new RuntimeException("Failed to read class with ASM", e);
+            e.printStackTrace();
+//            throw new RuntimeException("Failed to read class with ASM", e);
         }
+        return null;
     }
 
     public static String[] getMethodPaths(Class<?> controllerClass, Method method) {
