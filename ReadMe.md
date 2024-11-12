@@ -51,9 +51,14 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.Swaggy-Swagger:swagger-custom-java:1.0.0'
+    implementation 'com.github.Swaggy-Swagger:swagger-custom-java:1.0.1'
 }
 ```
+
+### Version Information
+| Swaggy-Swagger Version | Release Date | Notes                                                                 |
+|--------------------|--------------|-----------------------------------------------------------------------|
+| 1.0.1            | 2024-11-13   | [tag 1.0.1](https://github.com/Swaggy-Swagger/swagger-custom-java/tree/1.0.1)  |
 
 ## How to Apply Features
 
