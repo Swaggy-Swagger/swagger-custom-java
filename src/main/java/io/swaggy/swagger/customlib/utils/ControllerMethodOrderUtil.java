@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.InputStream;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,7 +29,6 @@ public class ControllerMethodOrderUtil {
                     .toList();
 
             // Reflection을 사용하여 메서드 리스트를 가져옴
-            System.out.println(controllerClass.getName() + " " + controllerClass.getDeclaredMethods().length);
             Method[] methods = controllerClass.getDeclaredMethods();
 
             // 메서드를 원래 순서에 따라 정렬

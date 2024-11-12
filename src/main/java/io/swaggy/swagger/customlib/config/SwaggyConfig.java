@@ -30,7 +30,6 @@ public class SwaggyConfig {
             List<String> sortedPathsOrder = new ArrayList<>();
             controllers.values().forEach(controller -> {
                 Class<?> controllerClass = controller.getClass();
-                System.out.println(controllerClass.getName());
                 List<Method> orderedMethods = ControllerMethodOrderUtil.getOrderedMethods(controllerClass);
                 orderedMethods.forEach(method -> {
                     String[] paths = ControllerMethodOrderUtil.getMethodPaths(controllerClass, method);
