@@ -48,9 +48,14 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.Swaggy-Swagger:swagger-custom-java:1.0.0'
+    implementation 'com.github.Swaggy-Swagger:swagger-custom-java:1.0.1'
 }
 ```
+### 버젼 정보
+| Swaggy-Swagger 버젼 | 배포일 | 배포 노트                                                                 |
+|--------------------|--------------|-----------------------------------------------------------------------|
+| 1.0.1            | 2024-11-13   | [tag 1.0.1](https://github.com/Swaggy-Swagger/swagger-custom-java/tree/1.0.1)  |
+
 
 ## 기능 추가하는 방법 
 
