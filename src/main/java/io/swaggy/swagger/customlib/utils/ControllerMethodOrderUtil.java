@@ -16,13 +16,7 @@ public class ControllerMethodOrderUtil {
     public static List<Method> getOrderedMethods(Class<?> controllerClass) {
         try {
             // ASM을 사용하여 클래스의 메서드 순서를 읽어옴
-            InputStream classInputStream = controllerClass.getClassLoader()
-                    .getResourceAsStream(controllerClass.getName().replace('.', '/') + ".class");
-            if (classInputStream == null) {
-                throw new RuntimeException("Class file not found for " + controllerClass.getName());
-            }
-
-            ClassReader classReader = new ClassReader(classInputStream);
+            ClassReader classReader = new ClassReader(controllerClass.getName());
             ClassNode classNode = new ClassNode();
             classReader.accept(classNode, 0);
 
