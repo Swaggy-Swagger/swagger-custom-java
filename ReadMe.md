@@ -60,6 +60,8 @@ dependencies {
 |--------------------|--------------|-----------------------------------------------------------------------|
 | 1.0.1            | 2024-11-13   | [tag 1.0.1](https://github.com/Swaggy-Swagger/swagger-custom-java/tree/1.0.1)  |
 
+> Please use version **1.0.1** or above. Versions **1.0.0** and **0.0.1** contain known issues.
+
 ## How to Apply Features
 
 ### Order controller methods by code line number
