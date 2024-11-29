@@ -75,6 +75,27 @@ import org.springframework.context.annotation.Import;
 public class YourOpenApiConfig {
 }
 ```
+
+### API Tag로 컨트롤러 정렬하는 기능
+> 위에서 언급된 `SwaggyConfig.class` 가 프로젝트에 적용되어 있어야 합니다.
+```yml
+# application.yml 
+swaggy:
+  tags:
+    - "tagName1"
+    - "tagName2"
+    - "tagName3"
+    ...
+```
+<details>
+<summary>예시</summary>
+
+| `application.yml`                                                                         | Result |
+|-------------------------------------------------------------------------------------------| ----- |
+| ![ymlEx](https://github.com/user-attachments/assets/cad5827e-63b8-4dc2-b96c-9f73d3d2af75) | ![sortByTagsResult](https://github.com/user-attachments/assets/42757c6d-c4e5-495e-bb46-6bf4ee7f3a27) |
+
+</details>
+
 ### API 변경 사항 추적하고 저장하는 기능 
 ```java
 import io.swaggy.swagger.customlib.utils.OpenApiChangeTracker;
