@@ -40,7 +40,8 @@ See [Swaggy-Swagger README.md](https://github.com/Swaggy-Swagger) for more detai
 
 ## Requirements
 - **Java 17 or higher**: This project requires Java version 17 or later.
-- **Spring Boot 3.x**: Ensure that you are using Spring Boot version 3.x for compatibility.
+- **Spring Boot 3.x**: Ensure that you are using Spring Boot version 3.x for compatibility.  
+- **Swagger dependency 2.x**: Make sure to include springdoc-openapi version 2.x in your project dependencies for proper functionality.
 
 ## Installation
 ### Add dependency to your project
